@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:machine_test/view/image_display.dart';
 
 import 'package:machine_test/view_model/provider_controller.dart';
-import 'package:machine_test/view_model/downloadController.dart';
+
 import 'package:provider/provider.dart';
 
 class home extends StatefulWidget {
@@ -18,6 +18,7 @@ class _homeState extends State<home> {
     final imageProvider =
         Provider.of<ImageProvidermodel>(context, listen: false);
     imageProvider.fetchImages();
+
     // TODO: implement initState
     super.initState();
   }

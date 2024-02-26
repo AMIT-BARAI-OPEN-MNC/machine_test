@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:machine_test/model/model.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -36,24 +39,50 @@ class ImageProvidermodel extends ChangeNotifier {
     return parsed.map<CustomData>((json) => CustomData.fromJson(json)).toList();
   }
 
-  Future<void> downloadImage(String imageUrl) async {
+  // saveNetworkImage(String imageUrl) async {
+  //   var response = await Dio()
+  //       .get("$imageUrl", options: Options(responseType: ResponseType.bytes));
+  //   final result = await ImageGallerySaver.saveImage(
+  //       Uint8List.fromList(response.data),
+  //       quality: 60,
+  //       name: "hello");
+  //   print(result);
+  // }
+
+  Future<void> saveNetworkImage(String imageUrl, BuildContext context) async {
     try {
-      // Fetch the image data
-      http.Response response = await http.get(Uri.parse(imageUrl));
+      // Show snackbar when download starts
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Downloading image...')),
+      );
 
-      // Get the local app directory
-      Directory appDir = await getApplicationDocumentsDirectory();
+      var response = await Dio().get(
+        imageUrl,
+        options: Options(responseType: ResponseType.bytes),
+      );
+      final result = await ImageGallerySaver.saveImage(
+        Uint8List.fromList(response.data),
+        quality: 60,
+        name: "hello",
+      );
 
-      // Create a new file in the app directory with a unique name
-      String fileName = imageUrl.split('/').last;
-      File imageFile = File('${appDir.path}/$fileName');
-
-      // Write the image data to the file
-      await imageFile.writeAsBytes(response.bodyBytes);
-
-      print('Image downloaded to: ${imageFile.path}');
+      if (result != null && result['isSuccess']) {
+        // Show snackbar when download is successful
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Image downloaded successfully')),
+        );
+      } else {
+        // Show snackbar when download fails
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to download image')),
+        );
+      }
     } catch (e) {
       print('Error downloading image: $e');
+      // Show snackbar when an error occurs during download
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error downloading image')),
+      );
     }
   }
 }

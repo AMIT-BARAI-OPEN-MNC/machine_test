@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:machine_test/view_model/provider_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -37,6 +37,7 @@ class imageDisplay extends StatelessWidget {
                     Image.network(
                       "${data.regularUrlimage}",
                       height: screenHeight * 0.5,
+                      width: screenWidth * 0.99,
                       fit: BoxFit.cover,
                     ),
                     SizedBox(
@@ -68,7 +69,7 @@ class imageDisplay extends StatelessWidget {
                         IconButton(
                             onPressed: () {
                               String imageUrl = data.fullUrlimage;
-                              imageProvider.downloadImage(imageUrl);
+                              imageProvider.saveNetworkImage(imageUrl, context);
                             },
                             icon: Icon(
                               Icons.download,

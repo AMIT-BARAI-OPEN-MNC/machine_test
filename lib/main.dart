@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:machine_test/view/home.dart';
 
 import 'package:machine_test/view_model/provider_controller.dart';
-import 'package:machine_test/view_model/downloadController.dart';
+
 import 'package:provider/provider.dart';
 // Assuming home.dart is in the same directory
 
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         // ChangeNotifierProvider(create: (_) => PageNotifier())
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
             // Define your app theme here
