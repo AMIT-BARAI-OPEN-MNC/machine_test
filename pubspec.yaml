@@ -41,6 +41,7 @@ dependencies:
   image_gallery_saver: ^2.0.3
   permission_handler: ^11.3.0
   dio: ^5.4.1
+  flutter_blurhash: ^0.8.2
 
 dev_dependencies:
   flutter_test:

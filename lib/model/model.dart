@@ -5,9 +5,11 @@ class CustomData {
   int likes;
   String description;
   String username;
+  String blur_hash;
 
   CustomData({
     required this.username,
+    required this.blur_hash,
     required this.fullUrlimage,
     required this.smollUrlimage,
     required this.regularUrlimage,
@@ -17,6 +19,7 @@ class CustomData {
 
   factory CustomData.fromJson(Map<String, dynamic> json) {
     return CustomData(
+      blur_hash: json['blur_hash'] ?? '',
       username: json['sponsorship']?['sponsor']?['social']
               ?['instagram_username'] ??
           '',

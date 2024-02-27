@@ -42,7 +42,7 @@ class _homeState extends State<home> {
                     horizontal: screenWidth * 0.02,
                     vertical: screenHeight * 0.005),
                 child: Container(
-                  height: screenHeight * 0.6,
+                  height: screenHeight * 0.75,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white),
@@ -84,14 +84,28 @@ class _homeState extends State<home> {
                             );
                           },
                           child: Container(
-                            child: Image.network(
-                              "${imageData.regularUrlimage}",
-                              fit: BoxFit.cover,
-                              height: screenHeight * 0.45,
-                              width: screenWidth * 0.9,
+                            height: screenHeight * 0.45,
+                            width: screenWidth * 0.9,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.network(
+                                "${imageData.regularUrlimage}",
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        )
+                        ),
+                        SizedBox(
+                          height: screenHeight * 0.02,
+                        ),
+                        Text(
+                          imageData.description == ""
+                              ? "There was no description available in this post"
+                              : "${imageData.description}",
+                          style: TextStyle(
+                              fontSize: screenWidth * 0.04,
+                              fontWeight: FontWeight.w700),
+                        ),
                       ],
                     ),
                   ),
