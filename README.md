@@ -2,15 +2,15 @@
 
 A new Flutter project.
 
-## Getting Started
+## app function video                       
+                                               
 
-This project is a starting point for a Flutter application.
+https://github.com/AMIT-BARAI-OPEN-MNC/machine_test/assets/74371875/cbfcfdff-410d-4418-af79-f0378589be6b
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ ## Some changes video
+  Functionality would be same some ui changes
+
+https://github.com/AMIT-BARAI-OPEN-MNC/machine_test/assets/74371875/57898fc8-188a-4946-9c7f-82946b29ee7f
+
